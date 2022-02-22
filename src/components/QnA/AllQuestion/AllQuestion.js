@@ -4,6 +4,7 @@ import "../Style/ViewQuestion.css";
 import ReactHtmlParser from "react-html-parser";
 import { Link } from "react-router-dom";
 import { stringAvatar } from "../../Utils/Avatar";
+import moment from "moment";
 
 function AllQuestion({ data }) {
   function truncate(str, n) {
@@ -51,7 +52,9 @@ function AllQuestion({ data }) {
               ))}
             </div>
             <div className="author">
-              <small>{data.created_at.toLocaleString()}</small>
+              <small>
+                {moment(data.created_at).format("MMMM Do YYYY, h:mm:ss a")}
+              </small>
               <div className="auth-details">
                 <Avatar {...stringAvatar(data?.user?.name)} />
                 <p>{data?.user?.name ? data?.user?.name : "AnonUser"}</p>

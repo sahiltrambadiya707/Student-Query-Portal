@@ -10,7 +10,7 @@ import { getAuth } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import AboutUs from "./components/Pages/AboutUs";
 import "./App.css";
-import "react-toastify/dist/ReactToastify.css";
+import "react-toastifive/dist/ReactToastify.css";
 import Home from "./components/Pages/Home";
 import EmailRegister from "./components/Pages/EmailRegister";
 import RegisterPage from "./components/Pages/RegisterPage";
@@ -37,12 +37,12 @@ function App() {
     return () => unsubscribe();
   }, [dispatch, auth]);
 
-  const PrivateRoute = ({ component: QnA, ...rest }) => (
+  const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
       {...rest}
       render={(props) =>
         user ? (
-          <QnA {...props} />
+          <Component {...props} />
         ) : (
           <Redirect
             to={{
@@ -59,17 +59,17 @@ function App() {
       <ToastContainer />
       <Router>
         <Switch>
+          <PrivateRoute exact path="/all-question" component={AllQuestion} />
+          <PrivateRoute exact path="/view-question" component={ViewQuestion} />
+          <PrivateRoute exact path="/add-question" component={AddQuestion} />
+          <PrivateRoute exact path="/your-question" component={YourQuestion} />
+
           <Route exact path="/" component={Home} />
           <Route exact path="/complete" component={RegisterPage} />
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/register" component={EmailRegister} />
           <Route exact path="/forgot/password" component={ForgotPassword} />
           <Route exact path="/aboutus" component={AboutUs} />
-
-          <PrivateRoute exact path="/all-question" component={AllQuestion} />
-          <PrivateRoute exact path="/view-question" component={ViewQuestion} />
-          <PrivateRoute exact path="/add-question" component={AddQuestion} />
-          <PrivateRoute exact path="/your-question" component={YourQuestion} />
         </Switch>
       </Router>
     </>

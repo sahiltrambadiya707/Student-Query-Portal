@@ -12,6 +12,7 @@ import {
   addAnswer,
   addComment,
 } from "../../../actions/index";
+import moment from "moment";
 
 const ViewQuestion = () => {
   var toolbarOptions = [
@@ -123,9 +124,9 @@ const ViewQuestion = () => {
               <p>
                 Asked
                 <span>
-                  {new Date(
-                    ViewQuestion.questionDetail?.created_at
-                  ).toLocaleString()}
+                  {moment(ViewQuestion.questionDetail?.created_at).format(
+                    "MMMM Do YYYY, h:mm:ss a"
+                  )}
                 </span>
               </p>
             </div>
@@ -140,10 +141,10 @@ const ViewQuestion = () => {
 
                 <div className="author">
                   <small>
-                    asked
-                    {new Date(
-                      ViewQuestion.questionDetail?.created_at
-                    ).toLocaleString()}
+                    asked{" "}
+                    {moment(ViewQuestion.questionDetail?.created_at).format(
+                      "MMMM Do YYYY, h:mm:ss a"
+                    )}
                   </small>
                   <div className="auth-details">
                     <Avatar
@@ -164,7 +165,11 @@ const ViewQuestion = () => {
                           {_qd.comment}
                           <span>- {_qd.user ? _qd.user.name : "AnonUser"}</span>
 
-                          <small>{_qd.created_at.toLocaleString()}</small>
+                          <small>
+                            {moment(_qd.created_at).format(
+                              "MMMM Do YYYY, h:mm:ss a"
+                            )}
+                          </small>
                         </p>
                       ))}
                   </div>
@@ -234,7 +239,12 @@ const ViewQuestion = () => {
                     <div className="question-answer">
                       {ReactHtmlParser(_q.answer)}
                       <div className="author">
-                        <small>asked {_q.created_at.toLocaleString()}</small>
+                        <small>
+                          asked{" "}
+                          {moment(_q.created_at).format(
+                            "MMMM Do YYYY, h:mm:ss a"
+                          )}
+                        </small>
                         <div className="auth-details">
                           <Avatar {...stringAvatar(_q?.user?.name)} />
                           <p>{_q?.user?.name ? _q?.user?.name : "AnonUser"}</p>

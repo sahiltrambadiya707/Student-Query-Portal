@@ -22,8 +22,6 @@ const EmailRegister = ({ history }) => {
     e.preventDefault();
     const config = {
       url: process.env.REACT_APP_REGISTER_REDIRECT_URL,
-      // url: "https://student-query-portal-backend.herokuapp.com/register/complete",
-      // REACT_APP_REGISTER_REDIRECT_URL='http://localhost:3000/register/complete'
       handleCodeInApp: true,
     };
 
