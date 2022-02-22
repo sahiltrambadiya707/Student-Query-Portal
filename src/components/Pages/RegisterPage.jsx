@@ -29,7 +29,7 @@ const RegisterPage = ({ history }) => {
   }, [user, history]);
 
   useEffect(() => {
-    setEmail(window.localStorage.getItem("emailForSignIn"));
+    setEmail(localStorage.getItem("emailForSignIn"));
   }, []);
   console.log(email);
   const handleSubmit = async (e) => {
