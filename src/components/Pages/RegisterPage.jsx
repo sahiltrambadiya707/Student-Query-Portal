@@ -31,7 +31,7 @@ const RegisterPage = ({ history }) => {
   useEffect(() => {
     setEmail(window.localStorage.getItem("emailForSignIn"));
   }, []);
-
+  console.log(email);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -148,7 +148,7 @@ const RegisterPage = ({ history }) => {
                 type="email"
                 name="email"
                 value={email}
-                disabled
+                readOnly
               />
             </label>
             <label className="rg-label">
