@@ -10,7 +10,7 @@ import { getAuth } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import AboutUs from "./components/Pages/AboutUs";
 import "./App.css";
-import "react-toastifive/dist/ReactToastify.css";
+import "react-toastify/dist/ReactToastify.css";
 import Home from "./components/Pages/Home";
 import EmailRegister from "./components/Pages/EmailRegister";
 import RegisterPage from "./components/Pages/RegisterPage";
