@@ -3,6 +3,8 @@ import { useState } from "react";
 import loginImg from "../Images/forgot-password.svg";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import { toast } from "react-toastify";
+// eslint-disable-next-line no-unused-vars
+import { app } from "../../firebase";
 
 const ForgotPassword = ({ history }) => {
   const [email, setEmail] = useState("");
@@ -19,7 +21,7 @@ const ForgotPassword = ({ history }) => {
         setTimeout(() => history.push("/login"), 5000);
       })
       .catch((error) => {
-        toast.error(error.message);
+        toast.error(error.message, { autoClose: 2000 });
         // ..
       });
   };

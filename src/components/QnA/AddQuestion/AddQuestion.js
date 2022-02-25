@@ -76,7 +76,7 @@ function AddQuestion() {
           history.push("/all-question");
         });
       } catch (error) {
-        toast.error("Something went wrong...!");
+        toast.error("Something went wrong...!", { autoClose: 2000 });
       }
     }
   };

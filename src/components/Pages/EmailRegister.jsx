@@ -3,6 +3,8 @@ import { getAuth, sendSignInLinkToEmail } from "firebase/auth";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import loginImg from "../Images/register.svg";
+// eslint-disable-next-line no-unused-vars
+import { app } from "../../firebase";
 
 const EmailRegister = ({ history }) => {
   const [email, setEmail] = useState("");

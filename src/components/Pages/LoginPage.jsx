@@ -11,6 +11,8 @@ import {
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { LoggedInUser } from "../../actions/actions";
+// eslint-disable-next-line no-unused-vars
+import { app } from "../../firebase";
 
 const LoginPage = ({ history }) => {
   const [email, setEmail] = useState("");
@@ -24,19 +26,19 @@ const LoginPage = ({ history }) => {
     setLoading(true);
 
     if (!email && !password) {
-      toast.error(`please enter email and password`);
+      toast.error(`please enter email and password`, { autoClose: 2000 });
       setLoading(false);
       return;
     }
 
     if (!email) {
-      toast.error(`please enter email`);
+      toast.error(`please enter email`, { autoClose: 2000 });
       setLoading(false);
       return;
     }
 
     if (!password) {
-      toast.error(`please enter password`);
+      toast.error(`please enter password`, { autoClose: 2000 });
       setLoading(false);
       return;
     }
@@ -50,7 +52,7 @@ const LoginPage = ({ history }) => {
         history.push("/");
       })
       .catch((error) => {
-        toast.error(error.message);
+        toast.error(error.message, { autoClose: 2000 });
         setLoading(false);
       });
   };
@@ -68,7 +70,7 @@ const LoginPage = ({ history }) => {
         history.push("/");
       })
       .catch((error) => {
-        toast.error(error.message);
+        toast.error(error.message, { autoClose: 2000 });
         setLoadingGoogle(false);
       });
   };

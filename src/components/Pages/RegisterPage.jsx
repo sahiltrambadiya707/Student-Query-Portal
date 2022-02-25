@@ -9,6 +9,8 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { toast } from "react-toastify";
+// eslint-disable-next-line no-unused-vars
+import { app } from "../../firebase";
 
 const RegisterPage = ({ history }) => {
   const [firstName, setFirstName] = useState("");
@@ -25,32 +27,34 @@ const RegisterPage = ({ history }) => {
     e.preventDefault();
 
     if (!email && !pass && !confirmPass) {
-      toast.error("Email and password is required");
+      toast.error("Email and password is required", { autoClose: 2000 });
       return;
     }
 
     if (!email) {
-      toast.error("Email is required");
+      toast.error("Email is required", { autoClose: 2000 });
       return;
     }
 
     if (!pass) {
-      toast.error("password is required");
+      toast.error("password is required", { autoClose: 2000 });
       return;
     }
 
     if (!confirmPass) {
-      toast.error("password is required");
+      toast.error("password is required", { autoClose: 2000 });
       return;
     }
 
     if (pass !== confirmPass) {
-      toast.error("Password doesn't match");
+      toast.error("Password doesn't match", { autoClose: 2000 });
       return;
     }
 
     if (pass.length < 6) {
-      toast.error("password must be at least 6 characters");
+      toast.error("password must be at least 6 characters", {
+        autoClose: 2000,
+      });
       return;
     }
 
@@ -70,18 +74,18 @@ const RegisterPage = ({ history }) => {
             })
               .then(() => {})
               .catch((error) => {
-                toast.error(error.message);
+                toast.error(error.message, { autoClose: 2000 });
               });
             await updatePassword(user, pass)
               .then((res) => {})
               .catch((error) => {
-                toast.error(error.message);
+                toast.error(error.message, { autoClose: 2000 });
               });
             localStorage.setItem("SQPT", user.accessToken);
           }
         })
         .catch((error) => {
-          toast.error(error.message);
+          toast.error(error.message, { autoClose: 2000 });
         });
     }
     history.push("/");

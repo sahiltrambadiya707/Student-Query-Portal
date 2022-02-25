@@ -89,7 +89,7 @@ const ViewQuestion = () => {
           setAnswer();
         });
       } catch (error) {
-        toast.error("Something went wrong...!");
+        toast.error("Something went wrong...!", { autoClose: 2000 });
       }
     }
   };
@@ -107,7 +107,7 @@ const ViewQuestion = () => {
           setShow(false);
         });
       } catch (error) {
-        toast.error("Something went wrong...!");
+        toast.error("Something went wrong...!", { autoClose: 2000 });
       }
     }
   };
