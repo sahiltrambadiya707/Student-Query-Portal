@@ -1,22 +1,11 @@
 import "../Style/emailRegister.css";
-// eslint-disable-next-line no-unused-vars
-import { app } from "../../firebase";
-import { useSelector } from "react-redux";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import loginImg from "../Images/forgot-password.svg";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import { toast } from "react-toastify";
 
 const ForgotPassword = ({ history }) => {
   const [email, setEmail] = useState("");
-
-  const { user } = useSelector((state) => ({ ...state }));
-
-  useEffect(() => {
-    if (user && user.token) {
-      history.push("/");
-    }
-  }, [user, history]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

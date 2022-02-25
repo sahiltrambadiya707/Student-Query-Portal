@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
 import Editor from "react-quill/lib/toolbar";
 import ReactHtmlParser from "react-html-parser";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "../Style/AllQuestion.css";
 import { stringAvatar } from "../../Utils/Avatar";
@@ -13,6 +13,7 @@ import {
   addComment,
 } from "../../../actions/index";
 import moment from "moment";
+import { toast } from "react-toastify";
 
 const ViewQuestion = () => {
   var toolbarOptions = [
@@ -83,11 +84,13 @@ const ViewQuestion = () => {
           "Content-Type": "application/json",
         },
       };
-      dispatch(addAnswer(body)).then((res) => {
-        if (res) {
-          dispatch(getQuestionDetails(id));
-        }
-      });
+      try {
+        await dispatch(addAnswer(body)).then(() => {
+          setAnswer();
+        });
+      } catch (error) {
+        toast.error("Something went wrong...!");
+      }
     }
   };
 
@@ -98,12 +101,14 @@ const ViewQuestion = () => {
         comment: comment,
         user: user,
       };
-      dispatch(addComment(body)).then((res) => {
-        setShow(false);
-        if (res) {
-          dispatch(getQuestionDetails(id));
-        }
-      });
+      try {
+        await dispatch(addComment(body)).then(() => {
+          setComment();
+          setShow(false);
+        });
+      } catch (error) {
+        toast.error("Something went wrong...!");
+      }
     }
   };
 
@@ -125,7 +130,7 @@ const ViewQuestion = () => {
                 Asked
                 <span>
                   {moment(ViewQuestion.questionDetail?.created_at).format(
-                    "MMMM Do YYYY, h:mm:ss a"
+                    "MMM Do YYYY, h:mm:ss a"
                   )}
                 </span>
               </p>
@@ -143,7 +148,7 @@ const ViewQuestion = () => {
                   <small>
                     asked{" "}
                     {moment(ViewQuestion.questionDetail?.created_at).format(
-                      "MMMM Do YYYY, h:mm:ss a"
+                      "MMM Do YYYY, h:mm:ss a"
                     )}
                   </small>
                   <div className="auth-details">
@@ -167,7 +172,7 @@ const ViewQuestion = () => {
 
                           <small>
                             {moment(_qd.created_at).format(
-                              "MMMM Do YYYY, h:mm:ss a"
+                              "MMM Do YYYY, h:mm:ss a"
                             )}
                           </small>
                         </p>
@@ -242,7 +247,7 @@ const ViewQuestion = () => {
                         <small>
                           asked{" "}
                           {moment(_q.created_at).format(
-                            "MMMM Do YYYY, h:mm:ss a"
+                            "MMM Do YYYY, h:mm:ss a"
                           )}
                         </small>
                         <div className="auth-details">

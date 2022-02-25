@@ -1,11 +1,10 @@
 const initState = {
   questionDetail: [],
-  answer: [],
-  comment: [],
+  // answer: [],
+  // comment: [],
 };
 
 export const viewQuestionReducer = (state = initState, action) => {
-  // console.log(action.payload);
   switch (action.type) {
     case "GET_QUESTION_DETAILS_BY_ID":
       return {

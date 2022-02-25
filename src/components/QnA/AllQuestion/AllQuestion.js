@@ -13,7 +13,7 @@ function AllQuestion({ data }) {
   let tags = JSON.parse(data?.tags[0]);
   return (
     <>
-      <div className="all-questions">
+      <div key={data._id} className="all-questions">
         <div className="all-questions-container">
           <div className="all-questions-left">
             <div className="all-options">
@@ -24,7 +24,7 @@ function AllQuestion({ data }) {
             </div>
           </div>
           <div className="question-answer">
-            <Link to={`/view-Question?q=${data?._id}`}>{data.title}</Link>
+            <Link to={`/view-question?q=${data?._id}`}>{data.title}</Link>
             <div
               style={{
                 maxWidth: "90%",
@@ -53,7 +53,7 @@ function AllQuestion({ data }) {
             </div>
             <div className="author">
               <small>
-                {moment(data.created_at).format("MMMM Do YYYY, h:mm:ss a")}
+                {moment(data.created_at).format("MMM Do YYYY, h:mm:ss a")}
               </small>
               <div className="auth-details">
                 <Avatar {...stringAvatar(data?.user?.name)} />

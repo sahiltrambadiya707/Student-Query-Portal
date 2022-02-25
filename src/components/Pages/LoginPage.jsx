@@ -1,7 +1,7 @@
 import "../Style/loginPage.css";
 import { Link } from "react-router-dom";
 import loginImg from "../Images/login.svg";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -9,7 +9,7 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { toast } from "react-toastify";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { LoggedInUser } from "../../actions/actions";
 
 const LoginPage = ({ history }) => {
@@ -18,14 +18,6 @@ const LoginPage = ({ history }) => {
   const [loading, setLoading] = useState(false);
   const [loadingGoogle, setLoadingGoogle] = useState(false);
   const dispatch = useDispatch();
-
-  const { user } = useSelector((state) => ({ ...state }));
-
-  useEffect(() => {
-    if (user && user.token) {
-      history.push("/");
-    }
-  }, [user, history]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -53,13 +45,11 @@ const LoginPage = ({ history }) => {
     signInWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
         const user = userCredential.user;
-        const idTokenResult = await user.getIdTokenResult();
-
-        dispatch(LoggedInUser(user, idTokenResult.token));
+        dispatch(LoggedInUser(user));
+        localStorage.setItem("SQPT", user.accessToken);
         history.push("/");
       })
       .catch((error) => {
-        console.log(error);
         toast.error(error.message);
         setLoading(false);
       });
@@ -73,9 +63,8 @@ const LoginPage = ({ history }) => {
     signInWithPopup(auth, provider)
       .then(async (result) => {
         const user = await result.user;
-        const idTokenResult = await user.idTokenResult;
-        // console.log(user, idTokenResult);
-        dispatch(LoggedInUser(user, user.accessToken));
+        dispatch(LoggedInUser(user));
+        localStorage.setItem("SQPT", user.accessToken);
         history.push("/");
       })
       .catch((error) => {

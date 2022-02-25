@@ -8,6 +8,7 @@ import { TagsInput } from "react-tag-input-component";
 import { useHistory } from "react-router-dom";
 import Navbar from "../../Utils/Navbar";
 import { AddQuestions } from "../../../actions/AddQuestion";
+import { toast } from "react-toastify";
 
 function AddQuestion() {
   var toolbarOptions = [
@@ -70,9 +71,13 @@ function AddQuestion() {
         tag: JSON.stringify(tag),
         user: user,
       };
-      dispatch(AddQuestions(bodyJSON)).then((res) => {
-        history.push("/all-question");
-      });
+      try {
+        await dispatch(AddQuestions(bodyJSON)).then((res) => {
+          history.push("/all-question");
+        });
+      } catch (error) {
+        toast.error("Something went wrong...!");
+      }
     }
   };
 

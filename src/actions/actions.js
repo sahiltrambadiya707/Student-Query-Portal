@@ -7,20 +7,25 @@ const INITIAL_VALUE = {
 };
 
 export const LoggedInUser = (data = INITIAL_VALUE, token) => {
-  return {
-    type: "LOGGED_IN_USER",
-    payload: {
-      name: data.displayName,
-      email: data.email,
-      emailVerified: data.emailVerified,
-      token: token,
-    },
+  return async (dispatch) => {
+    dispatch({
+      type: "LOGGED_IN_USER",
+      payload: {
+        name: data?.displayName,
+        email: data?.email,
+        emailVerified: data?.emailVerified,
+        token: data?.accessToken,
+      },
+    });
   };
 };
 
 export const LoggedOutUser = () => {
-  return {
-    type: "LOGOUT",
-    payload: null,
+  return async (dispatch) => {
+    localStorage.removeItem("SQPT");
+    dispatch({
+      type: "LOGOUT",
+      payload: null,
+    });
   };
 };

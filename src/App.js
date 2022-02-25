@@ -1,13 +1,8 @@
 import React, { useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { getAuth } from "firebase/auth";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import AboutUs from "./components/Pages/AboutUs";
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -21,11 +16,11 @@ import AllQuestion from "./components/QnA/AllQuestion/index";
 import ViewQuestion from "./components/QnA/ViewQuestion/index";
 import AddQuestion from "./components/QnA/AddQuestion/AddQuestion";
 import YourQuestion from "./components/QnA/YourQuestion/YourQuestion";
+import PrivateRoute from "./PrivateRoutes";
 
 function App() {
   const auth = getAuth();
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
@@ -36,23 +31,6 @@ function App() {
     });
     return () => unsubscribe();
   }, [dispatch, auth]);
-
-  const PrivateRoute = ({ component: Component, ...rest }) => (
-    <Route
-      {...rest}
-      render={(props) =>
-        user ? (
-          <Component {...props} />
-        ) : (
-          <Redirect
-            to={{
-              pathname: "/login",
-            }}
-          />
-        )
-      }
-    />
-  );
 
   return (
     <>

@@ -3,33 +3,36 @@ import Navbar from "../../Utils/Navbar";
 import "../Style/YourQuestion.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getYourQuestion, deleteYourQuestion } from "../../../actions/index";
+import { toast } from "react-toastify";
 
 const YourQuestion = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const yourQuestion = useSelector((state) => state.yourQuestion);
-  const email = user.email;
+  const email = user?.email;
 
   useEffect(() => {
-    if (yourQuestion.delete.status == 200) {
+    if (yourQuestion.delete.status === 200) {
+      dispatch(getYourQuestion(email));
+    } else {
       dispatch(getYourQuestion(email));
     }
   }, [dispatch, email, yourQuestion.delete]);
 
-  const deleteQ = (payload) => {
-    dispatch(deleteYourQuestion(payload));
+  const deleteQ = async (payload) => {
+    try {
+      dispatch(deleteYourQuestion(payload));
+    } catch (error) {
+      toast.error("Something went wrong...!");
+    }
   };
-
-  useEffect(() => {
-    dispatch(getYourQuestion(email));
-  }, [dispatch, email]);
 
   return (
     <>
       <Navbar />
       <div className="cus-container">
         <p className="p"> Your Questions </p>
-        {yourQuestion.yourQuestions.length > 0 ? (
+        {yourQuestion?.yourQuestions?.length > 0 ? (
           yourQuestion?.yourQuestions?.map((_q) => (
             <div key={_q._id} className="question-grid">
               <div className="question-grid-items">{_q.title}</div>
@@ -37,7 +40,7 @@ const YourQuestion = () => {
                 <button
                   className="button"
                   onClick={() => {
-                    const payload = _q._id;
+                    const payload = _q?._id;
 
                     deleteQ(payload);
                   }}

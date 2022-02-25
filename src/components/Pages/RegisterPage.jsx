@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import loginImg from "../Images/avatar.svg";
 import "../Style/registerPage.css";
-// eslint-disable-next-line no-unused-vars
-import { app } from "../../firebase";
 import {
   signInWithEmailLink,
   getAuth,
@@ -11,7 +9,6 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
 
 const RegisterPage = ({ history }) => {
   const [firstName, setFirstName] = useState("");
@@ -20,18 +17,10 @@ const RegisterPage = ({ history }) => {
   const [pass, setPass] = useState("");
   const [confirmPass, setConfirmPass] = useState("");
 
-  const { user } = useSelector((state) => ({ ...state }));
-
-  useEffect(() => {
-    if (user && user.token) {
-      history.push("/");
-    }
-  }, [user, history]);
-
   useEffect(() => {
     setEmail(localStorage.getItem("emailForSignIn"));
   }, []);
-  console.log(email);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -76,13 +65,10 @@ const RegisterPage = ({ history }) => {
           window.localStorage.removeItem("emailForSignIn");
           if (result.user.emailVerified) {
             let user = auth.currentUser;
-            // console.log(user);
             await updateProfile(user, {
               displayName: `${firstName} ${lastName}`,
             })
-              .then(() => {
-                // console.log("Name set");
-              })
+              .then(() => {})
               .catch((error) => {
                 toast.error(error.message);
               });
@@ -91,14 +77,10 @@ const RegisterPage = ({ history }) => {
               .catch((error) => {
                 toast.error(error.message);
               });
-
-            const idTokenResult = await user.getIdTokenResult();
-
-            // console.log("user", user, "idtokenresult", idTokenResult);
+            localStorage.setItem("SQPT", user.accessToken);
           }
         })
         .catch((error) => {
-          // console.log(error);
           toast.error(error.message);
         });
     }
