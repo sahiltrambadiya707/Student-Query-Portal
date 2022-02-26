@@ -1,6 +1,6 @@
 import "../Style/emailRegister.css";
 import { useState } from "react";
-import loginImg from "../Images/forgot-password.svg";
+import loginImg from "../Images/forgot.svg";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import { toast } from "react-toastify";
 // eslint-disable-next-line no-unused-vars

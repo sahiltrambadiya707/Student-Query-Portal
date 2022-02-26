@@ -118,7 +118,7 @@ const ViewQuestion = () => {
         <div className="main-container">
           <div className="main-top">
             <h2 className="main-question">
-              {ViewQuestion.questionDetail.title}
+              {ViewQuestion?.questionDetail?.title}
             </h2>
             <Link to="/add-question">
               <button className="button">Ask Question</button>
@@ -129,7 +129,7 @@ const ViewQuestion = () => {
               <p>
                 Asked
                 <span>
-                  {moment(ViewQuestion.questionDetail?.created_at).format(
+                  {moment(ViewQuestion?.questionDetail?.created_at).format(
                     "MMM Do YYYY, h:mm:ss a"
                   )}
                 </span>
@@ -142,31 +142,31 @@ const ViewQuestion = () => {
                 <div className="all-options"></div>
               </div>
               <div className="question-answer">
-                <p>{ReactHtmlParser(ViewQuestion.questionDetail?.body)}</p>
+                <div>{ReactHtmlParser(ViewQuestion?.questionDetail?.body)}</div>
 
                 <div className="author">
                   <small>
                     asked{" "}
-                    {moment(ViewQuestion.questionDetail?.created_at).format(
+                    {moment(ViewQuestion?.questionDetail?.created_at).format(
                       "MMM Do YYYY, h:mm:ss a"
                     )}
                   </small>
                   <div className="auth-details">
                     <Avatar
-                      {...stringAvatar(ViewQuestion.questionDetail?.user?.name)}
+                      {...stringAvatar(ViewQuestion?.questionDetail?.user?.name)}
                     />
                     <p>
                       {ViewQuestion.questionDetail?.user?.name
-                        ? ViewQuestion.questionDetail?.user?.name
+                        ? ViewQuestion?.questionDetail?.user?.name
                         : "AnonUser"}
                     </p>
                   </div>
                 </div>
                 <div className="comments">
                   <div className="comment">
-                    {ViewQuestion.questionDetail.comments &&
-                      ViewQuestion.questionDetail.comments.map((_qd) => (
-                        <p key={_qd?._id}>
+                    {ViewQuestion?.questionDetail?.comments &&
+                      ViewQuestion?.questionDetail?.comments?.map((_qd,i) => (
+                        <p key={i}>
                           {_qd.comment}
                           <span>- {_qd.user ? _qd.user.name : "AnonUser"}</span>
 
@@ -226,8 +226,8 @@ const ViewQuestion = () => {
               {ViewQuestion?.questionDetail?.answerDetails?.length}
               Answers
             </p>
-            {ViewQuestion.questionDetail.answerDetails &&
-              ViewQuestion.questionDetail.answerDetails.map((_q) => (
+            {ViewQuestion?.questionDetail?.answerDetails &&
+              ViewQuestion?.questionDetail?.answerDetails?.map((_q,i) => (
                 <>
                   <div
                     style={{
@@ -235,7 +235,7 @@ const ViewQuestion = () => {
                       margin: "10px 0px",
                       padding: "10px",
                     }}
-                    key={_q?._id}
+                    key={i}
                     className="all-questions-container"
                   >
                     <div className="all-questions-left">

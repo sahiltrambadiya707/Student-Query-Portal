@@ -8,8 +8,7 @@ const AboutUs = () => {
       <Navbar />
       <div id="about_us_section" className="about-section">
         <div className="about-inner-container">
-          {/* <h1>About Us</h1> */}
-          <p className="about-text">
+          <div className="about-text">
             <h1>About Us !</h1>
             <h2 style={{ textalign: "center" }}>
               Welcome To <span id="W_Name1">student query portal</span>
@@ -44,7 +43,7 @@ const AboutUs = () => {
                 Have a nice day !
               </span>
             </p>
-          </p>
+          </div>
         </div>
       </div>
       <Footer />

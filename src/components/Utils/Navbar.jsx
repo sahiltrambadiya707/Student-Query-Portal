@@ -66,9 +66,9 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="navbar-contact-us-btn">
-            <a className="navbar-link" href="#footer_section">
+            <Link className="navbar-link" to="#footer_section">
               Contact Us
-            </a>
+            </Link>
           </li>
         </ul>
         <ul className="navbar-user-list">
@@ -87,7 +87,9 @@ const Navbar = () => {
 
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-          <img className="navbar-logo" src={logo} alt="" />
+          <Link to="/">
+            <img className="navbar-logo" src={logo} alt="" />
+          </Link>
           <button
             className="navbar-toggler"
             style={{ border: "none" }}
@@ -111,18 +113,20 @@ const Navbar = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">
+              {/* <span onClick={scrollTop()}> */}
               <Link className="nav-link active" aria-current="page" to="/">
                 Home
               </Link>
+              {/* </span> */}
               <Link className="nav-link" to="/all-question">
                 QnA
               </Link>
               <Link className="nav-link" to="/aboutus">
                 About Us
               </Link>
-              <a className="nav-link" href="#footer_section">
+              <Link className="nav-link" to="#footer_section">
                 Contact Us
-              </a>
+              </Link>
               <hr />
               <Link className="navbar-link" to="/register">
                 {user && user.token ? null : "Register"}

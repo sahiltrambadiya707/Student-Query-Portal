@@ -6,14 +6,14 @@ import { Link } from "react-router-dom";
 import { stringAvatar } from "../../Utils/Avatar";
 import moment from "moment";
 
-function AllQuestion({ data }) {
+function AllQuestion({ data, i }) {
   function truncate(str, n) {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
   }
   let tags = JSON.parse(data?.tags[0]);
   return (
     <>
-      <div key={data._id} className="all-questions">
+      <div key={i} className="all-questions">
         <div className="all-questions-container">
           <div className="all-questions-left">
             <div className="all-options">
@@ -24,22 +24,22 @@ function AllQuestion({ data }) {
             </div>
           </div>
           <div className="question-answer">
-            <Link to={`/view-question?q=${data?._id}`}>{data.title}</Link>
+            <Link to={`/view-question?q=${data?._id}`}>{data?.title}</Link>
             <div
               style={{
                 maxWidth: "90%",
               }}
             >
-              <div>{ReactHtmlParser(truncate(data.body, 200))}</div>
+              <div>{ReactHtmlParser(truncate(data?.body, 200))}</div>
             </div>
             <div
               style={{
                 display: "flex",
               }}
             >
-              {tags.map((_tag) => (
+              {tags?.map((_tag,i) => (
                 <p
-                  key={_tag._d}
+                  key={i}
                   style={{
                     margin: "10px 5px",
                     padding: "5px 10px",
@@ -53,7 +53,7 @@ function AllQuestion({ data }) {
             </div>
             <div className="author">
               <small>
-                {moment(data.created_at).format("MMM Do YYYY, h:mm:ss a")}
+                {moment(data?.created_at).format("MMM Do YYYY, h:mm:ss a")}
               </small>
               <div className="auth-details">
                 <Avatar {...stringAvatar(data?.user?.name)} />

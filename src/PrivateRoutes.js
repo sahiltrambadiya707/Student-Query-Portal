@@ -7,7 +7,8 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
       {...rest}
       component={(props) => {
         const token = localStorage.getItem("SQPT");
-        if (token) {
+        const emailForSignIn = localStorage.getItem("emailForSignIn");
+        if (token || emailForSignIn) {
           return <Component {...props} />;
         } else {
           return <Redirect to={`/login`} />;

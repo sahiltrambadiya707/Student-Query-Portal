@@ -7,7 +7,6 @@ import yu from "../Images/illustration-your-users.svg";
 import im from "../Images/illustration-mockups.svg";
 
 const Home = ({ history }) => {
-
   return (
     <>
       <Navbar />
@@ -31,31 +30,33 @@ const Home = ({ history }) => {
         <div className="home-container-grow-together">
           <img className="home-gt-mockup" src={gt} alt="" />
           <div className="text-container">
-          <h1 className="home-gt-heading">Our Public Platform</h1>
-          <p className="home-gt-text">
-            Where Students/Faculty can gain, learn, share their knowledge.
-          </p></div>
+            <h1 className="home-gt-heading">Our Public Platform</h1>
+            <p className="home-gt-text">
+              Where Students/Faculty can gain, learn, share their knowledge.
+            </p>
+          </div>
         </div>
         <div className="home-container-flowing-conversations">
           <img className="home-fc-mockup" src={fc} alt="" />
           <div className="text-container">
-          <h1 className="home-fc-heading">Keep community at our center</h1>
-          <p className="home-fc-text">
-            Community is at the heart of everything we do. Nurture healthy
-            communities where everyone is encouraged to learn and give back.
-          </p></div>
+            <h1 className="home-fc-heading">Keep community at our center</h1>
+            <p className="home-fc-text">
+              Community is at the heart of everything we do. Nurture healthy
+              communities where everyone is encouraged to learn and give back.
+            </p>
+          </div>
         </div>
         <div className="home-container-your-users">
           <img className="home-yu-mockup" src={yu} alt="" />
           <div className="text-container">
-          <h1 className="home-yu-heading">Our Users</h1>
-          <p className="home-yu-text">
-            Once signed in to our app, users can start posting immediately.
-          </p></div>
+            <h1 className="home-yu-heading">Our Users</h1>
+            <p className="home-yu-text">
+              Once signed in to our app, users can start posting immediately.
+            </p>
+          </div>
         </div>
       </div>
       <Footer />
-      {/* <button onClick={logout}>Logout</button> */}
     </>
   );
 };

@@ -40,7 +40,7 @@ const EmailRegister = ({ history }) => {
         <form autoComplete="off" onSubmit={handleSubmit} className="email-form">
           <h1 className="rg-h1">Register here!</h1>
           <label className="email-label">
-            Email
+            <span className="star">Email</span>
             <input
               autoComplete="false"
               className="email-input"
@@ -51,7 +51,10 @@ const EmailRegister = ({ history }) => {
               onChange={(e) => setEmail(e.target.value)}
             />
           </label>
-          <button className="email-register"> Register </button>
+          <button disabled={!email} className="email-register">
+            {" "}
+            Register{" "}
+          </button>
         </form>
         <img className="email-svg" src={loginImg} alt="" />
       </div>

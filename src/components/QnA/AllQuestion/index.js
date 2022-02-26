@@ -18,7 +18,7 @@ function Index() {
       <Navbar />
       <div className="stack-index">
         <div className="stack-index-content">
-          <Main questions={questions.questions} />
+          <Main questions={questions?.questions} />
         </div>
       </div>
     </>

@@ -17,6 +17,8 @@ import ViewQuestion from "./components/QnA/ViewQuestion/index";
 import AddQuestion from "./components/QnA/AddQuestion/AddQuestion";
 import YourQuestion from "./components/QnA/YourQuestion/YourQuestion";
 import PrivateRoute from "./PrivateRoutes";
+// eslint-disable-next-line no-unused-vars
+import { app } from "./firebase";
 
 function App() {
   const auth = getAuth();
@@ -41,9 +43,9 @@ function App() {
           <PrivateRoute exact path="/view-question" component={ViewQuestion} />
           <PrivateRoute exact path="/add-question" component={AddQuestion} />
           <PrivateRoute exact path="/your-question" component={YourQuestion} />
+          <PrivateRoute exact path="/complete" component={RegisterPage} />
 
           <Route exact path="/" component={Home} />
-          <Route exact path="/complete" component={RegisterPage} />
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/register" component={EmailRegister} />
           <Route exact path="/forgot/password" component={ForgotPassword} />

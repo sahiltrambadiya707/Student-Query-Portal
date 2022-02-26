@@ -3,11 +3,11 @@ import "../Style/ViewQuestion.css";
 import ViewQuestion from "./ViewQuestion";
 import Navbar from "../../Utils/Navbar";
 
-function Index() {
+function Index(i) {
   return (
     <>
       <Navbar />
-      <div className="stack-index">
+      <div key={i} className="stack-index">
         <div className="stack-index-content">
           <ViewQuestion />
         </div>

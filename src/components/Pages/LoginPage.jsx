@@ -82,7 +82,7 @@ const LoginPage = ({ history }) => {
           <h1 className="login-h1">Welcome Back!</h1>
           <form action="/" method="">
             <label className="login-label">
-              Email
+              <span className="star">Email</span>
               <input
                 className="login-input"
                 type="email"
@@ -93,7 +93,7 @@ const LoginPage = ({ history }) => {
               />
             </label>
             <label className="login-label">
-              Password
+              <span className="star">Password</span>
               <input
                 className="login-input"
                 type="password"
@@ -108,7 +108,11 @@ const LoginPage = ({ history }) => {
                 forgot password?
               </Link>
             </label>
-            <button className="login-login" onClick={handleSubmit}>
+            <button
+              disabled={!email.trim() && !password.trim()}
+              className="login-login"
+              onClick={handleSubmit}
+            >
               {loading ? <i className="fa fa-spinner fa-spin "></i> : "Login"}
             </button>
             <button className="login-login-with-google" onClick={googleLogin}>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import loginImg from "../Images/avatar.svg";
 import "../Style/registerPage.css";
+import { Link } from "react-router-dom";
 import {
   signInWithEmailLink,
   getAuth,
@@ -99,7 +100,7 @@ const RegisterPage = ({ history }) => {
           <form action="/" method="" onSubmit={handleSubmit}>
             <div className="rg-name-input">
               <label className="rg-label">
-                First Name
+                <span className="star">First Name</span>
                 <input
                   className="rg-input-fn"
                   type="text"
@@ -113,7 +114,7 @@ const RegisterPage = ({ history }) => {
                 />
               </label>
               <label className="rg-label">
-                Last Name
+                <span className="star">Last Name</span>
                 <input
                   className="rg-input-ln"
                   type="text"
@@ -138,7 +139,7 @@ const RegisterPage = ({ history }) => {
               />
             </label>
             <label className="rg-label">
-              Password
+              <span className="star">Password</span>
               <input
                 className="rg-input"
                 type="password"
@@ -151,7 +152,7 @@ const RegisterPage = ({ history }) => {
               />
             </label>
             <label className="rg-label">
-              Confirm password
+              <span className="star">Confirm password</span>
               <input
                 className="rg-input"
                 type="password"
@@ -163,8 +164,16 @@ const RegisterPage = ({ history }) => {
                 value={confirmPass}
               />
             </label>
-            <button className="rg-sign-up"> sign up </button>
-            {/* <Link to="/login"><button className="rg-login">Login</button></Link>  */}
+            <button
+              disabled={!firstName && !lastName && !pass && !confirmPass}
+              className="rg-sign-up"
+            >
+              {" "}
+              sign up{" "}
+            </button>
+            <Link to="/login">
+              <button className="rg-login">Login</button>
+            </Link>
           </form>
         </div>
         <img className="rg-login-svg" src={loginImg} alt="" />

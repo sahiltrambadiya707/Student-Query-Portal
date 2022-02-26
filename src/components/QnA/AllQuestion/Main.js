@@ -20,8 +20,8 @@ function Main({ questions }) {
           <p>{questions?.length} questions</p>
         </div>
         <div className="questions">
-          {questions?.map((_q) => (
-            <div key={_q._id} className="question">
+          {questions?.map((_q,i) => (
+            <div key={i} className="question">
               <AllQuestions data={_q} />
             </div>
           ))}
