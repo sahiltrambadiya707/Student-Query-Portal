@@ -5,7 +5,7 @@ export const getYourQuestion = (email) => {
   return async (dispatch) => {
     const res = await axios.get(`/api/viewquestion/${email}`);
     if (res.status === 200) {
-      const { question } = res.data;
+      const question  = res.data;
       dispatch({
         type: "GET_QUESTION_BY_EMAIL",
         payload: {

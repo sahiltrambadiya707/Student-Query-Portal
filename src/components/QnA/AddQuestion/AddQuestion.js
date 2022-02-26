@@ -6,7 +6,6 @@ import "../Style/AddQuestion.css";
 import Editor from "react-quill/lib/toolbar";
 import { TagsInput } from "react-tag-input-component";
 import { useHistory } from "react-router-dom";
-import Navbar from "../../Utils/Navbar";
 import { AddQuestions } from "../../../actions/AddQuestion";
 import { toast } from "react-toastify";
 
@@ -83,7 +82,6 @@ function AddQuestion() {
 
   return (
     <>
-      <Navbar />
       <div className="add-question">
         <div className="add-question-container">
           <div className="head-title">

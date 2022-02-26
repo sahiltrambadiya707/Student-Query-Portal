@@ -153,7 +153,9 @@ const ViewQuestion = () => {
                   </small>
                   <div className="auth-details">
                     <Avatar
-                      {...stringAvatar(ViewQuestion?.questionDetail?.user?.name)}
+                      {...stringAvatar(
+                        ViewQuestion?.questionDetail?.user?.name
+                      )}
                     />
                     <p>
                       {ViewQuestion.questionDetail?.user?.name
@@ -165,7 +167,7 @@ const ViewQuestion = () => {
                 <div className="comments">
                   <div className="comment">
                     {ViewQuestion?.questionDetail?.comments &&
-                      ViewQuestion?.questionDetail?.comments?.map((_qd,i) => (
+                      ViewQuestion?.questionDetail?.comments?.map((_qd, i) => (
                         <p key={i}>
                           {_qd.comment}
                           <span>- {_qd.user ? _qd.user.name : "AnonUser"}</span>
@@ -227,7 +229,7 @@ const ViewQuestion = () => {
               Answers
             </p>
             {ViewQuestion?.questionDetail?.answerDetails &&
-              ViewQuestion?.questionDetail?.answerDetails?.map((_q,i) => (
+              ViewQuestion?.questionDetail?.answerDetails?.map((_q, i) => (
                 <>
                   <div
                     style={{

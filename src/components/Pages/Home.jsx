@@ -1,5 +1,4 @@
 import Footer from "../Utils/Footer";
-import Navbar from "../Utils/Navbar";
 import "../Style/home.css";
 import fc from "../Images/illustration-flowing-conversation.svg";
 import gt from "../Images/illustration-grow-together.svg";
@@ -9,8 +8,7 @@ import im from "../Images/illustration-mockups.svg";
 const Home = ({ history }) => {
   return (
     <>
-      <Navbar />
-      <div>
+      <div id="home_section">
         <div className="home-container-top">
           <div className="home-container-mockup">
             <img className="home-mockup" src={im} alt="" />
@@ -56,6 +54,7 @@ const Home = ({ history }) => {
           </div>
         </div>
       </div>
+      .
       <Footer />
     </>
   );

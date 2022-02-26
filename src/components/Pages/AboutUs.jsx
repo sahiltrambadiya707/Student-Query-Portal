@@ -1,11 +1,8 @@
 import "../Style/aboutUs.css";
 import Footer from "../Utils/Footer";
-import Navbar from "../Utils/Navbar";
-
 const AboutUs = () => {
   return (
     <>
-      <Navbar />
       <div id="about_us_section" className="about-section">
         <div className="about-inner-container">
           <div className="about-text">

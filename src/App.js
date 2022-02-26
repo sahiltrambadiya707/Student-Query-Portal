@@ -19,6 +19,8 @@ import YourQuestion from "./components/QnA/YourQuestion/YourQuestion";
 import PrivateRoute from "./PrivateRoutes";
 // eslint-disable-next-line no-unused-vars
 import { app } from "./firebase";
+import Navbar from "./components/Utils/Navbar";
+import Footer from "./components/Utils/Footer";
 
 function App() {
   const auth = getAuth();
@@ -38,6 +40,7 @@ function App() {
     <>
       <ToastContainer />
       <Router>
+        <Navbar />
         <Switch>
           <PrivateRoute exact path="/all-question" component={AllQuestion} />
           <PrivateRoute exact path="/view-question" component={ViewQuestion} />
@@ -45,10 +48,10 @@ function App() {
           <PrivateRoute exact path="/your-question" component={YourQuestion} />
           <PrivateRoute exact path="/complete" component={RegisterPage} />
 
-          <Route exact path="/" component={Home} />
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/register" component={EmailRegister} />
           <Route exact path="/forgot/password" component={ForgotPassword} />
+          <Route exact path="/" component={Home} />
           <Route exact path="/aboutus" component={AboutUs} />
         </Switch>
       </Router>

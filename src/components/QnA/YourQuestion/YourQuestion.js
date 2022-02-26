@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import Navbar from "../../Utils/Navbar";
 import "../Style/YourQuestion.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getYourQuestion, deleteYourQuestion } from "../../../actions/index";
@@ -29,11 +28,10 @@ const YourQuestion = () => {
 
   return (
     <>
-      <Navbar />
       <div className="cus-container">
         <p className="p"> Your Questions </p>
-        {yourQuestion?.yourQuestions?.length > 0 ? (
-          yourQuestion?.yourQuestions?.map((_q) => (
+        {yourQuestion?.yourQuestions?.QnA?.question.length > 0 ? (
+          yourQuestion?.yourQuestions?.QnA?.question.map((_q) => (
             <div key={_q._id} className="question-grid">
               <div className="question-grid-items">{_q.title}</div>
               <div className="question-grid-items">

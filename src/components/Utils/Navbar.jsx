@@ -31,9 +31,9 @@ const Navbar = () => {
   return (
     <>
       <nav className="navbar-main">
-        <Link to="/">
+        <a href="#home_section">
           <img className="navbar-logo" src={logo} alt="" />
-        </Link>
+        </a>
 
         <div className="menu-toggle">
           <span>
@@ -66,9 +66,9 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="navbar-contact-us-btn">
-            <Link className="navbar-link" to="#footer_section">
+            <a className="navbar-link" href="#footer_section">
               Contact Us
-            </Link>
+            </a>
           </li>
         </ul>
         <ul className="navbar-user-list">
@@ -124,9 +124,9 @@ const Navbar = () => {
               <Link className="nav-link" to="/aboutus">
                 About Us
               </Link>
-              <Link className="nav-link" to="#footer_section">
+              <a className="nav-link" href="#footer_section">
                 Contact Us
-              </Link>
+              </a>
               <hr />
               <Link className="navbar-link" to="/register">
                 {user && user.token ? null : "Register"}
