@@ -16,12 +16,12 @@ function Footer(props) {
               <div className="footer-decoration" />
               <br />
               <p className="footer-company-description footer-font-small">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Et
-                delectus ullam quasi, aut harum magni
+                The man who does not read books has no advantage over the one
+                who cannot read them.
               </p>
             </div>
             <div className="col-md-4">
-              <h3>USEFUL LINKS</h3>
+              <h3>Useful Links</h3>
               <div className="footer-decoration"></div>
               <br />
               <ul className="footer-ul font-small">
@@ -67,9 +67,9 @@ function Footer(props) {
                 <li className="footer-li">
                   <i className="fas fa-phone" /> +91 9558654707{" "}
                 </li>
-                <li className="footer-li">
+                {/* <li className="footer-li">
                   <i className="fas fa-phone" /> 1800 1899 1714
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>
