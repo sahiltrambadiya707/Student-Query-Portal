@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 
 export const getQuestionDetails = (id) => {
   return async (dispatch) => {
-    const res = await axios.get(`/api/question/${id}`);
+    const res = await axios.get(`/question/${id}`);
     if (res.status === 200) {
       const questionDetail = res.data;
       dispatch({
@@ -26,7 +26,7 @@ export const getQuestionDetails = (id) => {
 
 export const addAnswer = (body) => {
   return async (dispatch) => {
-    const res = await axios.post("/api/answer", body);
+    const res = await axios.post("/answer", body);
     if (res.status === 201) {
       const answer = res.data;
       dispatch({
@@ -51,7 +51,7 @@ export const addAnswer = (body) => {
 
 export const addComment = (body) => {
   return async (dispatch) => {
-    const res = await axios.post(`/api/comment`, body);
+    const res = await axios.post(`/comment`, body);
     if (res.status === 201) {
       const comment = res.data;
       dispatch({
